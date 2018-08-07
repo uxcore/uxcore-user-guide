@@ -1,5 +1,5 @@
 /**
- * AitoUserGuide Component Demo for uxcore
+ * UserGuide Component Demo for uxcore
  * @author buzhou
  *
  * Copyright 2015-2016, Uxcore Team, Alinw.
@@ -8,6 +8,6 @@
 
 const ReactDOM = require('react-dom');
 const React = require('react');
-const Demo = require('./AitoUserGuideDemo');
+const Demo = require('./UserGuideDemo');
 ReactDOM.render(<Demo />, document.getElementById('UXCoreDemo'));
 

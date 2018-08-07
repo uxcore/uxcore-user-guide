@@ -1,5 +1,5 @@
 /**
- * AitoUserGuide Component for uxcore
+ * UserGuide Component for uxcore
  * @author buzhou
  *
  * Copyright 2015-2016, Uxcore Team, Alinw.
@@ -7,17 +7,20 @@
  */
 const React = require('react');
 const ReactDOM = require('react-dom');
-const AitoUserGuideStage = require('./AitoUserGuideStage');
+const UserGuideStage = require('./UserGuideStage');
 const scrollToTop = require('./scrollToTop');
 
 const guideMap = {};
 
 // HOC, 不是一个react component
-export default class AitoUserGuide {
+export default class UserGuide {
   constructor(key, config) {
     this.key = key;
     this.locale = config && config.locale || 'zh-cn';
     this.useImg = config && config.useImage || false;
+    this.prefixCls = config && config.prefixCls || 'kuma-user-guide';
+    this.className = config && config.className || '';
+    this.onComplete = config && config.onComplete;
   }
   addUserGuide(guideProps) {
     const { step = 0 } = guideProps;
@@ -43,12 +46,12 @@ export default class AitoUserGuide {
     // key must specified
     const steps = (this.steps || []).filter(i => i);
     const dom = document.createElement('div');
-    dom.className = `aito-user-guide-stage${designMode ? ' design-mode' : ''}`;
+    dom.className = `${this.prefixCls}-stage${designMode ? ' design-mode' : ''}${this.className?` ${this.className}`:''}`;
     document.body.appendChild(dom);
     const overflow = document.body.style.overflowY;
     document.body.style.overflowY = 'hidden';
     scrollToTop(0);
-    ReactDOM.render(<AitoUserGuideStage
+    ReactDOM.render(<UserGuideStage
       steps={steps}
       locale={this.locale}
       done={() => {
@@ -67,12 +70,12 @@ export default class AitoUserGuide {
   }
 }
 
-AitoUserGuide.getWithKey = function getWithKey(key, config) {
+UserGuide.getWithKey = function getWithKey(key, config) {
   if (guideMap[key]) {
     return guideMap[key];
   }
-  guideMap[key] = new AitoUserGuide(key, config);
+  guideMap[key] = new UserGuide(key, config);
   return guideMap[key];
 };
 
-module.exports = AitoUserGuide;
+module.exports = UserGuide;

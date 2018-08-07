@@ -30,7 +30,7 @@ const LEFT_ARROW = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAABKBAMAAA
 
 const RIGHT_ARROW = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAABKBAMAAAC7nzwcAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAtUExURUdwTM7OzsfHx8PDw8TExMPDw8PDw8XFxcPDw8TExMPDw8TExMPDw8PDw8LCwqdnTr8AAAAOdFJOUwAMIN5r8ZQ0zEaBWbqn+68bwwAAAeRJREFUSMdjYKApkF1Iuh69p44k62E/99iBZE2cfY83kKyJ2+7FBJI1sdi9KSBZk1TcWwUyND0jXZPauwsk6hBxYDi3gERL4gI5nwqgh+aNXtyRzbjn3YsNHE/Qo9ru3bunuEKTKfVdWAHDPkM0YdXH7lOaBXClgnctQCk7tPTD2NcIJHAlgqfpoFh9jB7NjwXwBMBGECH8Gk2U7TWuJA1nrWtAl8MRxSJ9sKTJGIcrkTKiOnFu3FNYHuB6g8vlk5GjmmnxuzfwbKP6HJeeukCk4Dr3zgrh5DyciY0DKSz03t1EsvMdzkTN8hYpLJHTEtsznDHB9BQSFNMx0sIlTMXO0LRmB3QC46y+t0Qkdca+t5DgPzdB3K313bsjxOQPsXdPj3kDXXRv07t377omEpeptICZ4QUwhSyIuFJIdE5kmpV7FqiH9AKTIY8MPYtJL2NHAf1AJulaOPEWcziy9hPS7cEoxonIeXGkpzbeN2Q4LYhkLUxxpGceCTKcdo/0UGNYSnqbgYFpGGUCRtJbZwwa4aS3Uu3MSdbj+obkzCb7LoHkLG0XTXKY5b0gOdUIv1tAcgCwmZMRnwK0TzNkpH8m0utPxqUkRyZQyyVSHZb67jipafneu+skd4NIdhjQN0l0KQEA9YJ/Yn2MqJgAAAAASUVORK5CYII='; // eslint-disable-line
 
-class AitoUserGuideStage extends React.Component {
+class UserGuideStage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -62,8 +62,8 @@ class AitoUserGuideStage extends React.Component {
     if (s.type === 'HTMLElement' || s.type === 'HTMLElementMaker' || s.type === 'ReactComponent') {
       let dom = s.dom;
       if (s.type === 'HTMLElementMaker') {
-        if (typeof s.dom === 'function') {
-          dom = s.dom();
+        if (typeof s.getDom === 'function') {
+          dom = s.getDom();
         }
       }
       if (!(dom instanceof HTMLElement)) {
@@ -174,7 +174,7 @@ class AitoUserGuideStage extends React.Component {
           placement="bottomRight"
           trigger={['click']}
           visible={visible}
-          overlayClassName="aito-user-guide-stage-step-hint"
+          overlayClassName="kuma-user-guide-stage-step-hint"
           key={s.step}
         >
           <div
@@ -194,14 +194,14 @@ class AitoUserGuideStage extends React.Component {
   }
 }
 
-AitoUserGuideStage.defaultProps = {
+UserGuideStage.defaultProps = {
   steps: [],
   done: () => {},
   locale: 'zh-cn',
   designMode: false,
 };
 
-AitoUserGuideStage.propTypes = {
+UserGuideStage.propTypes = {
   steps: PropTypes.array,
   done: PropTypes.func,
   locale: PropTypes.string,
@@ -209,6 +209,6 @@ AitoUserGuideStage.propTypes = {
   designMode: PropTypes.bool,
 };
 
-AitoUserGuideStage.displayName = 'AitoUserGuideStage';
+UserGuideStage.displayName = 'UserGuideStage';
 
-module.exports = AitoUserGuideStage;
+module.exports = UserGuideStage;

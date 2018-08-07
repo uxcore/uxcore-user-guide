@@ -70,13 +70,13 @@ Yes please! See the [CONTRIBUTING](https://github.com/uxcore/uxcore/blob/master/
 
 一个产品或者页面中可能有多个引导，需要给每个引导做一个key
 ```javascript
-const AitoUserGuide = require('@ali/uxcore-aito-user-guide').getWithKey('guide-key');
+const UserGuide = require('@ali/uxcore-aito-user-guide').getWithKey('guide-key');
 ```
 然后给这个引导添加步骤，每个步骤可以有4种选择
 * 使用React HOC
 
 ```javascript
-const Step1 = AitoUserGuide.addUserGuide({
+const Step1 = UserGuide.addUserGuide({
   dom: 'button',
   step: 1,
   hint: '我是第一步提示',
@@ -86,7 +86,7 @@ const Step1 = AitoUserGuide.addUserGuide({
 * 使用DOM
 
 ```javascript
-const Step1 = AitoUserGuide.addUserGuide({
+const Step1 = UserGuide.addUserGuide({
   dom: document.getElementById('app'),
   step: 2,
   hint: '我是第二步提示',
@@ -96,7 +96,7 @@ const Step1 = AitoUserGuide.addUserGuide({
 * 使用一个函数返回DOM
 
 ```javascript
-const Step1 = AitoUserGuide.addUserGuide({
+const Step1 = UserGuide.addUserGuide({
   dom() { return document.getElementById('app'); },
   step: 3,
   hint: '我是第三步提示',
@@ -106,7 +106,7 @@ const Step1 = AitoUserGuide.addUserGuide({
 * 使用图片
 
 ```javascript
-AitoUserGuide.addUserGuide({
+UserGuide.addUserGuide({
   step: 4,
   hint: '我是第四步的提示，我也没有对应的DOM',
   type: 'Image',
@@ -121,5 +121,5 @@ AitoUserGuide.addUserGuide({
 需要开始引导时，需要
 
 ```javascript
-AitoUserGuide.start('guide-key');
+UserGuide.start('guide-key');
 ```

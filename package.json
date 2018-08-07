@@ -28,7 +28,7 @@
     "react",
     "react-component",
     "uxcore-user-guide",
-    "AitoUserGuide",
+    "UserGuide",
     "component"
   ],
   "publishConfig": {

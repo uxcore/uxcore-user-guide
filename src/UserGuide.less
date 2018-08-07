@@ -1,10 +1,12 @@
 /**
- * AitoUserGuide Component Style for uxcore
+ * UserGuide Component Style for uxcore
  * @author buzhou
  *
  * Copyright 2015-2016, Uxcore Team, Alinw.
  * All rights reserved.
  */
+
+@__popoverPrefixCls: kuma-user-guide;
 
 @keyframes breathing {
   0%, 100% {
@@ -18,14 +20,14 @@
 }
 
 
-.aito-user-guide-stage {
+.@{__popoverPrefixCls}-stage {
   position: absolute;
   left: 0;
   top: 0;
   height: 100%;
   width: 100%;
   z-index: 100;
-  background: rgba(31,56,88,0.04);
+  background: @normal-alpha-9;
   .breathing-point {
     position: absolute;
     height: 20px;
@@ -40,7 +42,7 @@
       left: 5px;
       position: absolute;
       border-radius: 50%;
-      background: rgba(243,115,39,0.20);
+      background: @brand-primary-alpha-6;
       animation: breathing;
       animation-duration: 2s;
       animation-iteration-count: infinite;
@@ -51,21 +53,21 @@
       position: absolute;
       top: 5px;
       left: 5px;
-      background: #FF6F00;
+      background: @brand-primary;
       border-radius: 50%;
     }
   }
 }
-.aito-user-guide-stage-step-hint {
+.@{__popoverPrefixCls}-stage-step-hint {
   width: 300px;
   .step-hint-title {
     font-size: 16px;
-    color: rgba(0,0,0,0.80);
+    color: @dark-alpha-2;
     margin-bottom: 12px;
   }
   .step-hint-desc {
     font-size: 12px;
-    color: rgba(0, 0, 0, 0.6);
+    color: @dark-alpha-3;
     img,
     video {
       width: 250px;
@@ -89,19 +91,8 @@
   }
   .skip-text {
     font-size: 12px;
-    color: rgba(31,56,88,0.40);
+    color: @normal-alpha-4;
     cursor: pointer;
-  }
-  &.kuma-tooltip-placement-bottomLeft,
-  &.kuma-tooltip-placement-topLeft {
-    .kuma-tooltip-arrow,
-    .kuma-tooltip-arrow{
-      left: 20px;
-      margin-top: -5px;
-    }
-    .kuma-tooltip-content {
-      transform: translateX(-10px);
-    }
   }
   &.kuma-tooltip-placement-bottomRight,
   &.kuma-tooltip-placement-topRight {
