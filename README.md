@@ -70,7 +70,11 @@ Yes please! See the [CONTRIBUTING](https://github.com/uxcore/uxcore/blob/master/
 
 一个产品或者页面中可能有多个引导，需要给每个引导做一个key
 ```javascript
-const UserGuide = require('@ali/uxcore-aito-user-guide').getWithKey('guide-key');
+const UserGuide = require('@ali/uxcore-aito-user-guide').getWithKey('guide-key', {
+  // config here
+  // prefixCls,
+  // className
+});
 ```
 然后给这个引导添加步骤，每个步骤可以有4种选择
 * 使用React HOC
@@ -97,7 +101,7 @@ const Step1 = UserGuide.addUserGuide({
 
 ```javascript
 const Step1 = UserGuide.addUserGuide({
-  dom() { return document.getElementById('app'); },
+  getDom() { return document.getElementById('app'); },
   step: 3,
   hint: '我是第三步提示',
   type: 'HTMLElementMaker',
