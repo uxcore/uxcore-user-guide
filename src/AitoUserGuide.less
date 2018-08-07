@@ -1,0 +1,113 @@
+/**
+ * AitoUserGuide Component Style for uxcore
+ * @author buzhou
+ *
+ * Copyright 2015-2016, Uxcore Team, Alinw.
+ * All rights reserved.
+ */
+
+@keyframes breathing {
+  0%, 100% {
+    animation-timing-function: spring(1 90 11 -0.2);
+  }
+
+  50% {
+    transform: scale(2);
+    animation-timing-function: linear;
+  }
+}
+
+
+.aito-user-guide-stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  background: rgba(31,56,88,0.04);
+  .breathing-point {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    &.hidden {
+      display: none;
+    }
+    .big {
+      height: 10px;
+      width: 10px;
+      top: 5px;
+      left: 5px;
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(243,115,39,0.20);
+      animation: breathing;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+    }
+    .small {
+      height: 10px;
+      width: 10px;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      background: #FF6F00;
+      border-radius: 50%;
+    }
+  }
+}
+.aito-user-guide-stage-step-hint {
+  width: 300px;
+  .step-hint-title {
+    font-size: 16px;
+    color: rgba(0,0,0,0.80);
+    margin-bottom: 12px;
+  }
+  .step-hint-desc {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+    img,
+    video {
+      width: 250px;
+    }
+  }
+  .kuma-tooltip-inner {
+    text-align: left;
+    padding: 20px 24px;
+  }
+  .hint-bottom {
+    margin-top: 20px;
+    overflow: auto;
+    line-height: 28px;
+    vertical-align: middle;
+    button {
+      float: right;
+    }
+    .kuma-button-secondary {
+      margin-right: 8px;
+    }
+  }
+  .skip-text {
+    font-size: 12px;
+    color: rgba(31,56,88,0.40);
+    cursor: pointer;
+  }
+  &.kuma-tooltip-placement-bottomLeft,
+  &.kuma-tooltip-placement-topLeft {
+    .kuma-tooltip-arrow,
+    .kuma-tooltip-arrow{
+      left: 20px;
+      margin-top: -5px;
+    }
+    .kuma-tooltip-content {
+      transform: translateX(-10px);
+    }
+  }
+  &.kuma-tooltip-placement-bottomRight,
+  &.kuma-tooltip-placement-topRight {
+    .kuma-tooltip-arrow {
+      right: 5px;
+      left: auto;
+    }
+  }
+}
