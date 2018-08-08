@@ -70,7 +70,7 @@ Yes please! See the [CONTRIBUTING](https://github.com/uxcore/uxcore/blob/master/
 
 一个产品或者页面中可能有多个引导，需要给每个引导做一个key
 ```javascript
-const UserGuide = require('@ali/uxcore-aito-user-guide').getWithKey('guide-key', {
+const UserGuide = require('uxcore-user-guide').getWithKey('guide-key', {
   // config here
   // prefixCls,
   // className
