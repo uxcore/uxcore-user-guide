@@ -54,6 +54,7 @@ export default class UserGuide {
     ReactDOM.render(<UserGuideStage
       steps={steps}
       locale={this.locale}
+      prefixCls={this.prefixCls}
       done={() => {
         document.body.removeChild(dom);
         document.body.style.overflowY = overflow;

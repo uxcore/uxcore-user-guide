@@ -32,7 +32,7 @@
     "component"
   ],
   "publishConfig": {
-    "registry": "http://registry.npm.alibaba-inc.com"
+    "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
     "console-polyfill": "^0.2.2",
@@ -50,7 +50,8 @@
   "dependencies": {
     "classnames": "^2.1.2",
     "prop-types": "15.x",
-    "uxcore": "^0.21.4"
+    "uxcore-button": "^0.4.19",
+    "uxcore-tooltip": "^0.4.11"
   },
   "contributors": [],
   "license": "MIT"
