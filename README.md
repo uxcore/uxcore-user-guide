@@ -11,26 +11,26 @@ React user guide
 
 [![Sauce Test Status][sauce-image]][sauce-url]
 
-[npm-image]: http://img.shields.io/npm/v/uxcore-aito-user-guide.svg?style=flat-square
-[npm-url]: http://npmjs.org/package/uxcore-aito-user-guide
-[travis-image]: https://img.shields.io/travis/uxcore/uxcore-aito-user-guide.svg?style=flat-square
-[travis-url]: https://travis-ci.org/uxcore/uxcore-aito-user-guide
-[coveralls-image]: https://img.shields.io/coveralls/uxcore/uxcore-aito-user-guide.svg?style=flat-square
-[coveralls-url]: https://coveralls.io/r/uxcore/uxcore-aito-user-guide?branch=master
-[dep-image]: http://img.shields.io/david/uxcore/uxcore-aito-user-guide.svg?style=flat-square
-[dep-url]: https://david-dm.org/uxcore/uxcore-aito-user-guide
-[devdep-image]: http://img.shields.io/david/dev/uxcore/uxcore-aito-user-guide.svg?style=flat-square
-[devdep-url]: https://david-dm.org/uxcore/uxcore-aito-user-guide#info=devDependencies
-[downloads-image]: https://img.shields.io/npm/dm/uxcore-aito-user-guide.svg
-[sauce-image]: https://saucelabs.com/browser-matrix/uxcore-aito-user-guide.svg
-[sauce-url]: https://saucelabs.com/u/uxcore-aito-user-guide
+[npm-image]: http://img.shields.io/npm/v/uxcore-user-guide.svg?style=flat-square
+[npm-url]: http://npmjs.org/package/uxcore-user-guide
+[travis-image]: https://img.shields.io/travis/uxcore/uxcore-user-guide.svg?style=flat-square
+[travis-url]: https://travis-ci.org/uxcore/uxcore-user-guide
+[coveralls-image]: https://img.shields.io/coveralls/uxcore/uxcore-user-guide.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/uxcore/uxcore-user-guide?branch=master
+[dep-image]: http://img.shields.io/david/uxcore/uxcore-user-guide.svg?style=flat-square
+[dep-url]: https://david-dm.org/uxcore/uxcore-user-guide
+[devdep-image]: http://img.shields.io/david/dev/uxcore/uxcore-user-guide.svg?style=flat-square
+[devdep-url]: https://david-dm.org/uxcore/uxcore-user-guide#info=devDependencies
+[downloads-image]: https://img.shields.io/npm/dm/uxcore-user-guide.svg
+[sauce-image]: https://saucelabs.com/browser-matrix/uxcore-user-guide.svg
+[sauce-url]: https://saucelabs.com/u/uxcore-user-guide
 
 
 ### Development
 
 ```sh
-git clone https://github.com/uxcore/uxcore-aito-user-guide
-cd uxcore-aito-user-guide
+git clone https://github.com/uxcore/uxcore-user-guide
+cd uxcore-user-guide
 npm install
 npm run server
 ```
@@ -39,8 +39,8 @@ if you'd like to save your install time，you can use uxcore-tools globally.
 
 ```sh
 npm install uxcore-tools -g
-git clone https://github.com/uxcore/uxcore-aito-user-guide
-cd uxcore-aito-user-guide
+git clone https://github.com/uxcore/uxcore-user-guide
+cd uxcore-user-guide
 npm install
 npm run dep
 npm run start
@@ -60,7 +60,7 @@ npm run coverage
 
 ## Demo
 
-http://uxcore.alibaba.net/components/uxcore-aito-user-guide?type=others
+http://uxcore.alibaba.net/components/uxcore-user-guide?type=others
 
 ## Contribute
 

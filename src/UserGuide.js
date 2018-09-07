@@ -46,7 +46,7 @@ export default class UserGuide {
     // key must specified
     const steps = (this.steps || []).filter(i => i);
     const dom = document.createElement('div');
-    dom.className = `${this.prefixCls}-stage${designMode ? ' design-mode' : ''}${this.className?` ${this.className}`:''}`;
+    dom.className = `${this.prefixCls}-stage${designMode ? ' design-mode' : ''}${this.className ? ` ${this.className}` : ''}`;
     document.body.appendChild(dom);
     const overflow = document.body.style.overflowY;
     document.body.style.overflowY = 'hidden';
@@ -54,6 +54,7 @@ export default class UserGuide {
     ReactDOM.render(<UserGuideStage
       steps={steps}
       locale={this.locale}
+      prefixCls={this.prefixCls}
       done={() => {
         document.body.removeChild(dom);
         document.body.style.overflowY = overflow;

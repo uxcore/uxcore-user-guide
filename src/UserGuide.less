@@ -6,9 +6,9 @@
  * All rights reserved.
  */
 
-@__popoverPrefixCls: kuma-user-guide;
+@__userGuidePrefixCls: kuma-user-guide;
 
-@keyframes breathing {
+@keyframes kumaUserGuideBreathing {
   0%, 100% {
     animation-timing-function: spring(1 90 11 -0.2);
   }
@@ -20,52 +20,65 @@
 }
 
 
-.@{__popoverPrefixCls}-stage {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 100;
-  background: @normal-alpha-9;
-  .breathing-point {
+.@{__userGuidePrefixCls}{
+  &-stage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    background: @normal-alpha-9;
+  }
+  &-breathing-point {
     position: absolute;
     height: 20px;
     width: 20px;
-    &.hidden {
-      display: none;
+  }
+  &-hidden {
+    display: none;
+  }
+  &-big {
+    height: 10px;
+    width: 10px;
+    top: 5px;
+    left: 5px;
+    position: absolute;
+    border-radius: 50%;
+    background: @brand-primary-alpha-6;
+    animation: kumaUserGuideBreathing;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  &-small {
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: @brand-primary;
+    border-radius: 50%;
+  }
+  &-stage-step-hint {
+    width: 300px;
+    .kuma-tooltip-inner {
+      text-align: left;
+      padding: 20px 24px;
     }
-    .big {
-      height: 10px;
-      width: 10px;
-      top: 5px;
-      left: 5px;
-      position: absolute;
-      border-radius: 50%;
-      background: @brand-primary-alpha-6;
-      animation: breathing;
-      animation-duration: 2s;
-      animation-iteration-count: infinite;
-    }
-    .small {
-      height: 10px;
-      width: 10px;
-      position: absolute;
-      top: 5px;
-      left: 5px;
-      background: @brand-primary;
-      border-radius: 50%;
+    &.kuma-tooltip-placement-bottomRight,
+    &.kuma-tooltip-placement-topRight {
+      .kuma-tooltip-arrow {
+        right: 5px;
+        left: auto;
+      }
     }
   }
-}
-.@{__popoverPrefixCls}-stage-step-hint {
-  width: 300px;
-  .step-hint-title {
+  &-step-hint-title {
     font-size: 16px;
     color: @dark-alpha-2;
     margin-bottom: 12px;
   }
-  .step-hint-desc {
+  &-step-hint-desc {
     font-size: 12px;
     color: @dark-alpha-3;
     img,
@@ -73,11 +86,7 @@
       width: 250px;
     }
   }
-  .kuma-tooltip-inner {
-    text-align: left;
-    padding: 20px 24px;
-  }
-  .hint-bottom {
+  &-hint-bottom {
     margin-top: 20px;
     overflow: auto;
     line-height: 28px;
@@ -89,16 +98,9 @@
       margin-right: 8px;
     }
   }
-  .skip-text {
+  &-skip-text {
     font-size: 12px;
     color: @normal-alpha-4;
     cursor: pointer;
-  }
-  &.kuma-tooltip-placement-bottomRight,
-  &.kuma-tooltip-placement-topRight {
-    .kuma-tooltip-arrow {
-      right: 5px;
-      left: auto;
-    }
   }
 }

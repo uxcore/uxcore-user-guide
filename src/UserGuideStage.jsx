@@ -8,7 +8,8 @@
 const React = require('react');
 const PropTypes = require('prop-types');
 const scrollToTop = require('./scrollToTop');
-import Tooltip from 'uxcore/lib/Tooltip';
+import Tooltip from 'uxcore-tooltip';
+import Button from 'uxcore-button';
 
 const texts = {
   'zh-cn': {
@@ -118,24 +119,24 @@ class UserGuideStage extends React.Component {
     const multple = this.props.steps.length > 0;
     const finalText = this.props.finalText || (multple ?
       texts[this.props.locale].final : texts[this.props.locale].done);
-    return (<div className="guide-holder">
+    return (<div className={`${this.props.prefixCls}-holder`}>
       {this.props.steps.map((s, index) => {
         const center = this.getCenter(s);
         const visible = (this.state.currentStep === index) || this.props.designMode;
         const hint = (
           <div
-            className="step-hint"
+            className={`${this.props.prefixCls}-step-hint`}
           >
-            <div className="step-hint-title">
+            <div className={`${this.props.prefixCls}-step-hint-title`}>
               {s.title}
             </div>
             {!s.contentType || s.contentType === 'TEXT' &&
-              <div className="step-hint-desc">{s.content}</div>}
+              <div className={`${this.props.prefixCls}-step-hint-desc`}>{s.content}</div>}
             {s.contentType === 'IMAGE' &&
-              <div className="step-hint-desc"><img role="presentation" src={s.content} /></div>
+              <div className={`${this.props.prefixCls}-step-hint-desc`}><img role="presentation" src={s.content} /></div>
             }
             {s.contentType === 'VIDEO' &&
-              <div className="step-hint-desc">
+              <div className={`${this.props.prefixCls}-step-hint-desc`}>
                 <video
                   controls="true"
                   src={s.content}
@@ -144,28 +145,30 @@ class UserGuideStage extends React.Component {
                 />
               </div>
             }
-            <div className="hint-bottom">
+            <div className={`${this.props.prefixCls}-hint-bottom`}>
               <span
                 role="button"
-                className="skip-text"
+                className={`${this.props.prefixCls}-skip-text`}
                 onClick={() => this.nextStep(this.props.steps.length - 1)}
               >
                 {texts[this.props.locale].skip}
               </span>
-              <button
-                className="kuma-button-sm kuma-button-primary"
+              <Button
+                type="primary"
+                size="small"
                 onClick={() => { this.nextStep(index); }}
               >
                 {index === last ? finalText : texts[this.props.locale].next}
-              </button>
+              </Button>
               {
                 index > 0 &&
-                (<button
-                  className="kuma-button-sm kuma-button-secondary"
+                (<Button
+                  type="secondary"
+                  size="small"
                   onClick={() => { this.nextStep(index - 2); }}
                 >
                   {texts[this.props.locale].prev}
-                </button>)
+                </Button>)
               }
             </div>
           </div>);
@@ -174,19 +177,19 @@ class UserGuideStage extends React.Component {
           placement="bottomRight"
           trigger={['click']}
           visible={visible}
-          overlayClassName="kuma-user-guide-stage-step-hint"
+          overlayClassName={`${this.props.prefixCls}-stage-step-hint`}
           key={s.step}
         >
           <div
             key={s.step}
-            className={`breathing-point${visible ? '' : ' hidden'}`}
+            className={`${this.props.prefixCls}-breathing-point${visible ? '' : ` ${this.props.prefixCls}-hidden`}`}
             style={{
               top: (center.y + center.h / 2 - 20) || 0,
               left: (center.x + center.w / 2 - 20) || 0,
             }}
           >
-            <div className="big"></div>
-            <div className="small"></div>
+            <div className={`${this.props.prefixCls}-big`}></div>
+            <div className={`${this.props.prefixCls}-small`}></div>
           </div>
         </Tooltip>);
       })}
@@ -199,6 +202,7 @@ UserGuideStage.defaultProps = {
   done: () => {},
   locale: 'zh-cn',
   designMode: false,
+  prefixCls: 'kuma-user-guide',
 };
 
 UserGuideStage.propTypes = {
@@ -207,6 +211,7 @@ UserGuideStage.propTypes = {
   locale: PropTypes.string,
   finalText: PropTypes.string,
   designMode: PropTypes.bool,
+  prefixCls: PropTypes.string,
 };
 
 UserGuideStage.displayName = 'UserGuideStage';
