@@ -55,6 +55,7 @@ export default class UserGuide {
       steps={steps}
       locale={this.locale}
       prefixCls={this.prefixCls}
+      className={this.className}
       done={() => {
         document.body.removeChild(dom);
         document.body.style.overflowY = overflow;
