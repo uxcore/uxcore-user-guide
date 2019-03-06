@@ -10,6 +10,7 @@ const PropTypes = require('prop-types');
 const scrollToTop = require('./scrollToTop');
 import Tooltip from 'uxcore-tooltip';
 import Button from 'uxcore-button';
+import CheckboxGroup from 'uxcore-checkbox-group';
 
 const texts = {
   'zh-cn': {
@@ -17,13 +18,17 @@ const texts = {
     final: '立即体验',
     next: '下一步',
     prev: '上一步',
-    skip: '跳过引导',
+    skip: '跳过',
+    learnMore: '了解更多',
+    noRemind: '不再提醒',
   },
   'en-us': {
     done: 'Got it',
     next: 'next',
     final: 'Getting started',
     skip: 'Skip',
+    learnMore: 'Learn more',
+    noRemind: 'Do not remind',
   },
 };
 
@@ -36,6 +41,7 @@ class UserGuideStage extends React.Component {
     super(props);
     this.state = {
       currentStep: 0,
+      skipChecked: props.skipChecked || false,
     };
   }
   componentDidMount() {
@@ -114,6 +120,43 @@ class UserGuideStage extends React.Component {
       }
     });
   }
+  handleNoMindChange(step) {
+    this.setState({
+      skipChecked: !this.state.skipChecked,
+    }, () => {
+      this.props.onSkipClick(step);
+    });
+  }
+  renderSkipText() {
+    switch (this.props.skipType) {
+      case 'SKIP':
+        return (<span
+          role="button"
+          className={`${this.props.prefixCls}-skip-text`}
+          onClick={() => this.nextStep(this.props.steps.length - 1)}
+        >
+          {texts[this.props.locale].skip}
+        </span>);
+      case 'LEARN_MORE':
+        return (<span
+          role="button"
+          className={`${this.props.prefixCls}-skip-text`}
+          onClick={() => this.props.onSkipClick(this.props.steps[this.state.currentStep])}
+        >
+          {texts[this.props.locale].learnMore}
+        </span>);
+      case 'NO_REMIND':
+        return (<CheckboxGroup
+          value={[this.state.skipChecked ? '1' : '0']}
+          onChange={this.handleNoMindChange.bind(this)}
+          className={`${this.props.prefixCls}-skip-checkbox`}
+        >
+          <CheckboxGroup.Item text={texts[this.props.locale].noRemind} value="1" />
+        </CheckboxGroup>);
+      default:
+        return undefined;
+    }
+  }
   render() {
     const last = this.props.steps.length - 1;
     const multple = this.props.steps.length > 0;
@@ -127,9 +170,9 @@ class UserGuideStage extends React.Component {
           <div
             className={`${this.props.prefixCls}-step-hint`}
           >
-            <div className={`${this.props.prefixCls}-step-hint-title`}>
+            {s.title && <div className={`${this.props.prefixCls}-step-hint-title`}>
               {s.title}
-            </div>
+            </div>}
             {!s.contentType || s.contentType === 'TEXT' &&
               <div className={`${this.props.prefixCls}-step-hint-desc`}>{s.content}</div>}
             {s.contentType === 'IMAGE' &&
@@ -146,13 +189,7 @@ class UserGuideStage extends React.Component {
               </div>
             }
             <div className={`${this.props.prefixCls}-hint-bottom`}>
-              <span
-                role="button"
-                className={`${this.props.prefixCls}-skip-text`}
-                onClick={() => this.nextStep(this.props.steps.length - 1)}
-              >
-                {texts[this.props.locale].skip}
-              </span>
+              {this.renderSkipText()}
               <Button
                 type="primary"
                 size="small"
@@ -203,6 +240,9 @@ UserGuideStage.defaultProps = {
   locale: 'zh-cn',
   designMode: false,
   prefixCls: 'kuma-user-guide',
+  skipType: undefined,
+  onSkipClick: () => {},
+  skipChecked: false,
 };
 
 UserGuideStage.propTypes = {
@@ -212,6 +252,9 @@ UserGuideStage.propTypes = {
   finalText: PropTypes.string,
   designMode: PropTypes.bool,
   prefixCls: PropTypes.string,
+  skipType: PropTypes.string,
+  onSkipClick: PropTypes.func,
+  skipChecked: PropTypes.bool,
 };
 
 UserGuideStage.displayName = 'UserGuideStage';

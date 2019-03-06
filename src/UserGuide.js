@@ -20,6 +20,13 @@ export default class UserGuide {
     this.useImg = config && config.useImage || false;
     this.prefixCls = config && config.prefixCls || 'kuma-user-guide';
     this.className = config && config.className || '';
+    // 默认 true,
+    this.blocked = config && config.blocked;
+    if (this.blocked === undefined) {
+      this.blocked = true;
+    }
+    this.skipType = config && config.skipType;
+    this.onSkipClick = config && config.onSkipClick;
     this.onComplete = config && config.onComplete;
   }
   addUserGuide(guideProps) {
@@ -46,24 +53,30 @@ export default class UserGuide {
     // key must specified
     const steps = (this.steps || []).filter(i => i);
     const dom = document.createElement('div');
-    dom.className = `${this.prefixCls}-stage${designMode ? ' design-mode' : ''}${this.className ? ` ${this.className}` : ''}`;
+    dom.className = `${this.prefixCls}-stage${designMode ? ' design-mode' : ''}${this.className ?
+      ` ${this.className}` : ''}${this.blocked ? ' blocked' : ''}`;
     document.body.appendChild(dom);
     const overflow = document.body.style.overflowY;
-    document.body.style.overflowY = 'hidden';
+    if (this.blocked) {
+      document.body.style.overflowY = 'hidden';
+    }
     scrollToTop(0);
+    this.stop = function stop() {
+      document.body.removeChild(dom);
+      document.body.style.overflowY = overflow;
+      this.drop();
+      if (typeof this.onComplete === 'function') {
+        this.onComplete();
+      }
+    };
     ReactDOM.render(<UserGuideStage
       steps={steps}
+      skipType={this.skipType}
+      onSkipClick={this.onSkipClick}
       locale={this.locale}
       prefixCls={this.prefixCls}
       className={this.className}
-      done={() => {
-        document.body.removeChild(dom);
-        document.body.style.overflowY = overflow;
-        this.drop();
-        if (typeof this.onComplete === 'function') {
-          this.onComplete();
-        }
-      }}
+      done={() => this.stop()}
       designMode={designMode}
     />, dom);
   }

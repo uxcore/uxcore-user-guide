@@ -7,7 +7,10 @@
  */
 
 const React = require('react');
-const UserGuide = require('../src').getWithKey('1');
+const UserGuide = require('../src').getWithKey('1', {
+  blocked: false,
+  skipType: 'NO_REMIND',
+});
 
 const Step1 = UserGuide.addUserGuide({
   dom: 'button',
