@@ -5,7 +5,6 @@
  * Copyright 2015-2016, Uxcore Team, Alinw.
  * All rights reserved.
  */
-
 const React = require('react');
 const UserGuide = require('../src').getWithKey('1', {
   blocked: false,
@@ -17,6 +16,7 @@ const Step1 = UserGuide.addUserGuide({
   step: 1,
   title: '我是第一步提示',
   content: '这是一段说明文字，用来补充描述内容',
+  iconName: 'shanchu',
   contentType: 'TEXT',
   type: 'ReactComponent',
 });

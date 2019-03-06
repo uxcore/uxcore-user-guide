@@ -10,6 +10,7 @@ const PropTypes = require('prop-types');
 const scrollToTop = require('./scrollToTop');
 import Tooltip from 'uxcore-tooltip';
 import Button from 'uxcore-button';
+import Icon from 'uxcore-icon';
 import CheckboxGroup from 'uxcore-checkbox-group';
 
 const texts = {
@@ -170,24 +171,32 @@ class UserGuideStage extends React.Component {
           <div
             className={`${this.props.prefixCls}-step-hint`}
           >
-            {s.title && <div className={`${this.props.prefixCls}-step-hint-title`}>
-              {s.title}
-            </div>}
-            {!s.contentType || s.contentType === 'TEXT' &&
-              <div className={`${this.props.prefixCls}-step-hint-desc`}>{s.content}</div>}
-            {s.contentType === 'IMAGE' &&
-              <div className={`${this.props.prefixCls}-step-hint-desc`}><img role="presentation" src={s.content} /></div>
-            }
-            {s.contentType === 'VIDEO' &&
-              <div className={`${this.props.prefixCls}-step-hint-desc`}>
-                <video
-                  controls="true"
-                  src={s.content}
-                  poster={s.poster}
-                  preload="auto"
-                />
+            <div className={`${this.props.prefixCls}-step-hint-wrp`}>
+              {s.iconName && <Icon name={s.iconName} className={`${this.props.prefixCls}-step-hint-icon`} />}
+              <div>
+                {s.title && <div className={`${this.props.prefixCls}-step-hint-title`}>
+                  {s.title}
+                </div>}
+                {!s.contentType || s.contentType === 'TEXT' && (
+                  <div className={`${this.props.prefixCls}-step-hint-desc`}>{s.content}</div>
+                )}
+                {s.contentType === 'IMAGE' && (
+                  <div className={`${this.props.prefixCls}-step-hint-desc`}>
+                    <img role="presentation" src={s.content} />
+                  </div>
+                )}
+                {s.contentType === 'VIDEO' && (
+                  <div className={`${this.props.prefixCls}-step-hint-desc`}>
+                    <video
+                      controls="true"
+                      src={s.content}
+                      poster={s.poster}
+                      preload="auto"
+                    />
+                  </div>
+                )}
               </div>
-            }
+            </div>
             <div className={`${this.props.prefixCls}-hint-bottom`}>
               {this.renderSkipText()}
               <Button
