@@ -88,7 +88,7 @@ config 种含有的参数包括
 | prefixCls | string | `'kuma-user-guide'` | class 前缀 |
 | className | string | `''` | 定制类名 |
 | isBlocking | boolean | `true` | 是否阻塞UI|
-| assistType | string | `undefined` | 辅助按钮 / 链接 |
+| assistType | string | `undefined` | 辅助按钮 / 链接，可选值包括 `'SKIP'`: 跳过; `'LEARN_MORE'`: 了解更多; `'NO_REMIND'`: 不在提醒 |
 | onAssistClick | function | `undefined` | 辅助按钮 / 链接 点击时的回调函数 |
 | onComplete | function | `undefined` | 结束时的回调 |
 
@@ -144,4 +144,15 @@ UserGuide.addUserGuide({
 
 ```javascript
 UserGuide.start();
+```
+
+start 可以传递一个参数:
+| 参数名 | 类型 | 默认值 | 备注 |
+| --- | --- | --- | --- |
+| designMode | bool | false | 是否设计模式，如果是`true`，会展示所有的步骤 |
+
+
+需要关闭时，可以调用
+```javascript
+UserGuide.stop();
 ```
