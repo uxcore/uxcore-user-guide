@@ -70,10 +70,14 @@ Yes please! See the [CONTRIBUTING](https://github.com/uxcore/uxcore/blob/master/
 
 一个产品或者页面中可能有多个引导，需要给每个引导做一个key
 ```javascript
-const UserGuide = require('uxcore-user-guide').getWithKey('guide-key', {
-  // config here
-  // prefixCls,
-  // className
+const UserGuide = UserGuideFactory.getWithKey('1', {
+  // config
+  isBlocking: false,
+  assistType: 'NO_REMIND',
+  onAssistClick(step) {
+    console.log(step);
+    UserGuide.stop();
+  },
 });
 ```
 config 种含有的参数包括
