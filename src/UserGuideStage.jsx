@@ -5,9 +5,9 @@
  * @Last Modified time: 2018-02-24 19:32:32
  */
 
-const React = require('react');
-const PropTypes = require('prop-types');
-const scrollToTop = require('./scrollToTop');
+import React from 'react';
+import PropTypes from 'prop-types';
+import scrollToTop from './scrollToTop';
 import Tooltip from 'uxcore-tooltip';
 import Button from 'uxcore-button';
 import Icon from 'uxcore-icon';
@@ -32,10 +32,6 @@ const texts = {
     noRemind: 'Do not remind',
   },
 };
-
-const LEFT_ARROW = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAABKBAMAAAC7nzwcAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAtUExURUdwTNnZ2cPDw8vLy8PDw8PDw8PDw8TExMTExMXFxcPDw8XFxcTExMTExMLCwmBpOCIAAAAOdFJOUwAGxxLxlt5nfyWtNERVIw6LxwAAAepJREFUSMdjYCAfWCwmWYuE30tStYjnPdpAohbevEcHSNTCo/fsAolauPWeFZKohXPdk0YStTDHPWkmNci43gWTHDMcjxjYSfUOs98BkyeRJGrqU5DVe6crgFPefJEWhjvE3jJwh7xznYArJvzevXuGLsn+TICBuegdrpTAmFSzI88TXTSvAEhs9cOVFAwYGIQeoTv9XiI4mQrgCSewsciA6QWciStx3wtAT6JPDGCsZ8U40heGiF4DLE/4PVmD6iicDt7nDGPJrnuXgRyuHDk4k9xThCPa3r26iJAReY0zN7xDMvvUu8cITp0CzrCMQw4WcyTOugKceqww4nMvJCj9oA4QICbhrnvUA1TH+Qya5tKJ0VP07p1T+EaeR5BoW/fIgBhNMk3v3r2b/oqBYc/1IL93gUTmK5tSFQlgqsoDZgUSCgxGDqCeqKU9BqRkYfanpFcWvBkMo2BQg6Oka2HMu0C6JjyZGycQe05GintiQLomvQDS9Ux5S7oe9icTSNe0TpF0PWavSNfD6UFG8jEYfjmCW4B0PVuUSdez7dkGkvUw67mTbpEoGQ1DhpJnB0hPQXpPSQ87iXeJZIQdGRmWkY5plZGMfM7+lHQHsr7zIF3TLHI07cLdEMen6RXpmqa+ayA98KaSFbkAI9OEBJ8okNsAAAAASUVORK5CYII='; // eslint-disable-line
-
-const RIGHT_ARROW = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAABKBAMAAAC7nzwcAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAtUExURUdwTM7OzsfHx8PDw8TExMPDw8PDw8XFxcPDw8TExMPDw8TExMPDw8PDw8LCwqdnTr8AAAAOdFJOUwAMIN5r8ZQ0zEaBWbqn+68bwwAAAeRJREFUSMdjYKApkF1Iuh69p44k62E/99iBZE2cfY83kKyJ2+7FBJI1sdi9KSBZk1TcWwUyND0jXZPauwsk6hBxYDi3gERL4gI5nwqgh+aNXtyRzbjn3YsNHE/Qo9ru3bunuEKTKfVdWAHDPkM0YdXH7lOaBXClgnctQCk7tPTD2NcIJHAlgqfpoFh9jB7NjwXwBMBGECH8Gk2U7TWuJA1nrWtAl8MRxSJ9sKTJGIcrkTKiOnFu3FNYHuB6g8vlk5GjmmnxuzfwbKP6HJeeukCk4Dr3zgrh5DyciY0DKSz03t1EsvMdzkTN8hYpLJHTEtsznDHB9BQSFNMx0sIlTMXO0LRmB3QC46y+t0Qkdca+t5DgPzdB3K313bsjxOQPsXdPj3kDXXRv07t377omEpeptICZ4QUwhSyIuFJIdE5kmpV7FqiH9AKTIY8MPYtJL2NHAf1AJulaOPEWcziy9hPS7cEoxonIeXGkpzbeN2Q4LYhkLUxxpGceCTKcdo/0UGNYSnqbgYFpGGUCRtJbZwwa4aS3Uu3MSdbj+obkzCb7LoHkLG0XTXKY5b0gOdUIv1tAcgCwmZMRnwK0TzNkpH8m0utPxqUkRyZQyyVSHZb67jipafneu+skd4NIdhjQN0l0KQEA9YJ/Yn2MqJgAAAAASUVORK5CYII='; // eslint-disable-line
 
 class UserGuideStage extends React.Component {
   constructor(props) {
@@ -172,7 +168,10 @@ class UserGuideStage extends React.Component {
             className={`${this.props.prefixCls}-step-hint`}
           >
             <div className={`${this.props.prefixCls}-step-hint-wrp`}>
-              {s.iconName && <Icon name={s.iconName} className={`${this.props.prefixCls}-step-hint-icon`} />}
+              {s.iconName && (<Icon
+                name={s.iconName}
+                className={`${this.props.prefixCls}-step-hint-icon`}
+              />)}
               <div>
                 {s.title && <div className={`${this.props.prefixCls}-step-hint-title`}>
                   {s.title}
@@ -228,7 +227,8 @@ class UserGuideStage extends React.Component {
         >
           <div
             key={s.step}
-            className={`${this.props.prefixCls}-breathing-point${visible ? '' : ` ${this.props.prefixCls}-hidden`}`}
+            className={`${this.props.prefixCls}-breathing-point${visible ? ''
+              : ` ${this.props.prefixCls}-hidden`}`}
             style={{
               top: (center.y + center.h / 2 - 20) || 0,
               left: (center.x + center.w / 2 - 20) || 0,
