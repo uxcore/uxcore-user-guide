@@ -160,7 +160,7 @@ class UserGuideStage extends React.Component {
   }
   render() {
     const last = this.props.steps.length - 1;
-    const multple = this.props.steps.length > 0;
+    const multple = this.props.steps.length > 1;
     const finalText = this.props.finalText || (multple ?
       texts[this.props.locale].final : texts[this.props.locale].done);
     return (<div className={`${this.props.prefixCls}-holder`}>
