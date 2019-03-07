@@ -96,6 +96,7 @@ config 种含有的参数包括
 const Step1 = UserGuide.addUserGuide({
   dom: 'button',
   step: 1,
+  iconName: 'shanchu',
   hint: '我是第一步提示',
   type: 'ReactComponent',
 });
