@@ -76,6 +76,19 @@ const UserGuide = require('uxcore-user-guide').getWithKey('guide-key', {
   // className
 });
 ```
+config 种含有的参数包括
+
+| 参数名 | 类型 | 默认值 | 备注 |
+| --- | --- | --- | --- |
+| locale | string | `'zh-cn'` | 语言 |
+| prefixCls | string | `'kuma-user-guide'` | class 前缀 |
+| className | string | `''` | 定制类名 |
+| isBlocking | boolean | `true` | 是否阻塞UI|
+| assistType | string | `undefined` | 辅助按钮 / 链接 |
+| onAssistClick | function | `undefined` | 辅助按钮 / 链接 点击时的回调函数 |
+| onComplete | function | `undefined` | 结束时的回调 |
+
+
 然后给这个引导添加步骤，每个步骤可以有4种选择
 * 使用React HOC
 
@@ -125,5 +138,5 @@ UserGuide.addUserGuide({
 需要开始引导时，需要
 
 ```javascript
-UserGuide.start('guide-key');
+UserGuide.start();
 ```

@@ -121,15 +121,15 @@ class UserGuideStage extends React.Component {
       }
     });
   }
-  handleNoMindChange(step) {
+  handleNoMindChange() {
     this.setState({
       skipChecked: !this.state.skipChecked,
     }, () => {
-      this.props.onSkipClick(step);
+      this.props.onAssistClick(this.props.steps[this.state.currentStep]);
     });
   }
   renderSkipText() {
-    switch (this.props.skipType) {
+    switch (this.props.assistType) {
       case 'SKIP':
         return (<span
           role="button"
@@ -142,7 +142,7 @@ class UserGuideStage extends React.Component {
         return (<span
           role="button"
           className={`${this.props.prefixCls}-skip-text`}
-          onClick={() => this.props.onSkipClick(this.props.steps[this.state.currentStep])}
+          onClick={() => this.props.onAssistClick(this.props.steps[this.state.currentStep])}
         >
           {texts[this.props.locale].learnMore}
         </span>);
@@ -249,8 +249,8 @@ UserGuideStage.defaultProps = {
   locale: 'zh-cn',
   designMode: false,
   prefixCls: 'kuma-user-guide',
-  skipType: undefined,
-  onSkipClick: () => {},
+  assistType: undefined,
+  onAssistClick: () => {},
   skipChecked: false,
 };
 
@@ -261,8 +261,8 @@ UserGuideStage.propTypes = {
   finalText: PropTypes.string,
   designMode: PropTypes.bool,
   prefixCls: PropTypes.string,
-  skipType: PropTypes.string,
-  onSkipClick: PropTypes.func,
+  assistType: PropTypes.string,
+  onAssistClick: PropTypes.func,
   skipChecked: PropTypes.bool,
 };
 

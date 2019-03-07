@@ -6,9 +6,16 @@
  * All rights reserved.
  */
 const React = require('react');
-const UserGuide = require('../src').getWithKey('1', {
-  blocked: false,
-  skipType: 'NO_REMIND',
+const ReactDOM = require('react-dom');
+const Button = require('uxcore-button');
+const UserGuideFactory = require('../src');
+const UserGuide = UserGuideFactory.getWithKey('1', {
+  isBlocking: false,
+  assistType: 'NO_REMIND',
+  onAssistClick(step) {
+    console.log(step);
+    UserGuide.stop();
+  },
 });
 
 const Step1 = UserGuide.addUserGuide({
@@ -48,11 +55,36 @@ class Demo extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.guid2 = UserGuideFactory.getWithKey('2', {
+      assistType: 'SKIP',
+    });
+    this.guid2.addUserGuide({
+      step: 1,
+      title: '我是第一步提示',
+      content: '这是一段说明文字，用来补充描述内容',
+      contentType: 'TEXT',
+      type: 'HTMLElementMaker',
+      getDom() {
+        return document.getElementById('btn');
+      },
+    });
+  }
+
   render() {
     return (
       <div>
-        <Step1 onClick={() => UserGuide.start()}>测试的按钮</Step1>
+        <Step1 onClick={() => UserGuide.start()}>执行非阻塞，带 不在提醒 的引导</Step1>
         <div id="justTestIt">我是一个测试holder</div>
+        <Button
+          id="btn"
+          ref={(ref) => { this.btn = ref; }}
+          onClick={() => {
+            this.guid2.start();
+          }}
+        >
+          执行阻塞的，带跳过的引导
+        </Button>
       </div>
     );
   }
