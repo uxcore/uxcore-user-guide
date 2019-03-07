@@ -6,7 +6,6 @@
  * All rights reserved.
  */
 const React = require('react');
-const ReactDOM = require('react-dom');
 const Button = require('uxcore-button');
 const UserGuideFactory = require('../src');
 const UserGuide = UserGuideFactory.getWithKey('1', {
@@ -66,6 +65,7 @@ class Demo extends React.Component {
       contentType: 'TEXT',
       type: 'HTMLElementMaker',
       getDom() {
+        //
         return document.getElementById('btn');
       },
     });
