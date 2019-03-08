@@ -10,7 +10,7 @@ export default function scrollToTop(_target) {
   }
   scrollInterval = setInterval(() => {
     if (Math.abs(window.scrollY - target) > Math.abs(step)) {
-      scrollCount = scrollCount + 1;
+      scrollCount += 1;
       window.scrollTo(0, Math.ceil(scrollHeight + step * scrollCount));
     } else {
       window.scrollTo(0, target);

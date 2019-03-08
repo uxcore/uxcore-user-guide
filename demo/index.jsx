@@ -9,5 +9,5 @@
 const ReactDOM = require('react-dom');
 const React = require('react');
 const Demo = require('./UserGuideDemo');
-ReactDOM.render(<Demo />, document.getElementById('UXCoreDemo'));
 
+ReactDOM.render(<Demo />, document.getElementById('UXCoreDemo'));
