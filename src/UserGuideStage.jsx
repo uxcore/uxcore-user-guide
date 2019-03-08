@@ -165,6 +165,23 @@ class UserGuideStage extends React.Component {
     }
   }
 
+  renderIcon(step) {
+    const { prefixCls } = this.props;
+    if (!step.icon) {
+      return false;
+    }
+    if (typeof step.icon === 'string') {
+      return (
+        <Icon
+          usei
+          name={step.icon}
+          className={`${prefixCls}-step-hint-icon`}
+        />
+      );
+    }
+    return step.icon;
+  }
+
   render() {
     let { finalText } = this.props;
     const {
@@ -187,13 +204,7 @@ class UserGuideStage extends React.Component {
               className={`${prefixCls}-step-hint`}
             >
               <div className={`${prefixCls}-step-hint-wrp`}>
-                {s.iconName && (
-                  <Icon
-                    usei
-                    name={s.iconName}
-                    className={`${prefixCls}-step-hint-icon`}
-                  />
-                )}
+                {this.renderIcon(s)}
                 <div>
                   {s.title && (
                     <div className={`${prefixCls}-step-hint-title`}>

@@ -64,6 +64,10 @@ export default class UserGuide {
       document.body.style.overflowY = 'hidden';
     }
     scrollToTop(0);
+    steps.forEach((step) => {
+      const s = step;
+      s.assistType = this.assistType;
+    });
     this.stop = function stop(callOnComplete = true) {
       ReactDOM.unmountComponentAtNode(dom);
       document.body.removeChild(dom);

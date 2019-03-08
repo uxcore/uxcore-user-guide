@@ -23,7 +23,7 @@ const Step1 = UserGuide.addUserGuide({
   step: 1,
   title: '我是第一步提示',
   content: '这是一段说明文字，用来补充描述内容',
-  iconName: 'shanchu',
+  icon: 'shanchu',
   contentType: 'TEXT',
   type: 'ReactComponent',
 });

@@ -69,14 +69,29 @@ Yes please! See the [CONTRIBUTING](https://github.com/uxcore/uxcore/blob/master/
 ## 使用方法
 
 一个产品或者页面中可能有多个引导，需要给每个引导做一个key
+
 ```javascript
-const UserGuide = UserGuideFactory.getWithKey('1', {
-  // config
+const blokingUserGuide = UserGuideFactory.getWithKey('1', {
+  // 可以自定义参数
+  isBlocking: true,
+  assistType: 'SKIP',
+  onComplete() {
+    /** 引导结束，执行业务逻辑 **/
+  },
+});
+```
+
+```javascript
+const UserGuide = UserGuideFactory.getWithKey('2', {
+  // 可以自定义参数
   isBlocking: false,
   assistType: 'NO_REMIND',
   onAssistClick(step) {
+    // 点击 了解更多 / 不再提醒 时的回调函数
     console.log(step);
+    // 可以调用 stop 关闭当前引导。
     UserGuide.stop();
+    /** 业务逻辑，例如存储不再提醒，下次不要让用户查看相关提醒了。 **/
   },
 });
 ```
@@ -86,10 +101,11 @@ config 种含有的参数包括
 | --- | --- | --- | --- |
 | locale | string | `'zh-cn'` | 语言 |
 | prefixCls | string | `'kuma-user-guide'` | class 前缀 |
+| icon | string / React 组件 | undefined | 传递 string 时，以 uxcore-icon 的名字进行渲染；如果为 falsy 的值，则不会渲染；其他直接渲染，不包含外边框。 |
 | className | string | `''` | 定制类名 |
 | isBlocking | boolean | `true` | 是否阻塞UI|
 | assistType | string | `undefined` | 辅助按钮 / 链接，可选值包括 `'SKIP'`: 跳过; `'LEARN_MORE'`: 了解更多; `'NO_REMIND'`: 不再提醒 |
-| onAssistClick | function | `undefined` | 辅助按钮 / 链接 点击时的回调函数 |
+| onAssistClick | function | `undefined` | 了解更多 / 不再提醒 点击时的回调函数 |
 | onComplete | function | `undefined` | 结束时的回调 |
 
 
@@ -100,7 +116,7 @@ config 种含有的参数包括
 const Step1 = UserGuide.addUserGuide({
   dom: 'button',
   step: 1,
-  iconName: 'shanchu',
+  icon: 'shanchu',
   hint: '我是第一步提示',
   type: 'ReactComponent',
 });
@@ -149,7 +165,7 @@ UserGuide.start();
 start 可以传递参数:
 | 参数名 | 类型 | 默认值 | 备注 |
 | --- | --- | --- | --- |
-| designMode | bool | false | 是否设计模式，如果是`true`，会展示所有的步骤 |
+| designMode | bool | false | 是否设计模式，如果是`true`，会展示所有的步骤，以供调试及预览使用。 |
 
 
 需要关闭时，可以调用
@@ -160,4 +176,4 @@ UserGuide.stop();
 stop 可以传递参数
 | 参数名 | 类型 | 默认值 | 备注 |
 | --- | --- | --- | --- |
-| callOnComplete | bool | true | 关闭时是否叫用onComplete |
+| callOnComplete | bool | true | 关闭时是否调用onComplete |
