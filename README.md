@@ -163,6 +163,7 @@ UserGuide.start();
 ```
 
 start 可以传递参数:
+
 | 参数名 | 类型 | 默认值 | 备注 |
 | --- | --- | --- | --- |
 | designMode | bool | false | 是否设计模式，如果是`true`，会展示所有的步骤，以供调试及预览使用。 |
@@ -174,6 +175,7 @@ UserGuide.stop();
 ```
 
 stop 可以传递参数
+
 | 参数名 | 类型 | 默认值 | 备注 |
 | --- | --- | --- | --- |
 | callOnComplete | bool | true | 关闭时是否调用onComplete |
