@@ -28,6 +28,7 @@ const texts = {
     next: 'next',
     final: 'Getting started',
     skip: 'Skip',
+    prev: 'Prev',
     learnMore: 'Learn more',
     noRemind: 'Do not remind',
   },
