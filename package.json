@@ -1,6 +1,6 @@
 {
   "name": "@ali/uxcore-user-guide",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "uxcore-user-guide component for uxcore.",
   "repository": "https://github.com/uxcore/uxcore-user-guide.git",
   "author": "buzhou",
@@ -32,7 +32,7 @@
     "component"
   ],
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npm.alibaba-inc.com/"
   },
   "devDependencies": {
     "console-polyfill": "^0.2.2",
