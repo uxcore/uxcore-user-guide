@@ -1,5 +1,10 @@
 # history
 
+## 0.2.1
+
+* `FIXED` 多语言文案缺失
+* `CHORE` 原包没有 npm 发布权限，从 user-guide 更名为 user-guide-v2
+
 ## 0.2.0
 * `NEW`: `'SKIP'`, `'LEARN_MORE'`, `'NO_REMIND'` for `assistType`
 * `NEW`: `isBlocking` for block or no-blocking user guide
